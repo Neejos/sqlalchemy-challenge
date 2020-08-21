@@ -35,54 +35,22 @@ prcp_info=[row[1] for row in measurement_data]
 dict1=dict(zip(date_info,prcp_info))
 dict1
 
-# List the stations and the counts in descending order
-session2=Session(engine)
-stats=[Measurements.station,
-      func.min(Measurements.tobs),
-      func.max(Measurements.tobs),
-      func.avg(Measurements.tobs),
-      func.count(Measurements.tobs)]
-active_station=session2.query(*stats).\
-        group_by(Measurements.station).\
-        order_by(func.count(Measurements.tobs).desc()).all()
-
-stations=[row[0] for row in active_station]
-most_active_station=stations[0]
-
-session3=Session(engine)
-temps=
 
 
-from flask import Flask,jsonify
+
+
+from flask import Flask
 
 app=Flask(__name__)
 
 @app.route("/")
-def home():
+def home()
     return(f"Welcome to the Home Page<br/>"
-    
         f"The following are the available links:<br/>"
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/startDate<br/>"
-        f"/api/v1.0/startDate/endDate>")
-
-@app.route("/api/v1.0/precipitation")
-def precipitation_data():
-    """Return the dates and the precipitation data as json"""
-    return jsonify(dict1)
-
-@app.rote("/api/v1.0/stations")
-def stations_names():
-    return jsonify(stations)
-
-@app.route("/api/v1.0/tobs<br/>")
-def temp():
-    return
-
-
-
+        f"/api/v1.0/<start>` and `/api/v1.0/<start>/<end>")
 if __name__ == "__main__":
     app.run(debug=True)
 
