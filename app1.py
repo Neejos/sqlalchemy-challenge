@@ -91,7 +91,7 @@ def summary(Date):
         func.avg(Measurements.tobs),
         func.max(Measurements.tobs)]
     result=session4.query(*sel1).\
-        filter(func.strftime("%Y-%m=%d",Measurements.date)>= func.strftime("%Y-%m=%d",Date)).\
+        filter(func.strftime("%Y-%m-%d",Measurements.date)>= func.strftime("%Y-%m-%d",Date)).\
         group_by(Measurements.date).all()
     
     all_Temps = []
