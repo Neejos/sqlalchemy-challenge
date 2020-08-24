@@ -21,34 +21,6 @@ Measurements=Base.classes.measurement
 Station=Base.classes.station
 
 
-
-# Convert the query results to a dictionary using `date` as the key and `prcp` as the value.
-# Design a query to retrieve the last 12 months of precipitation data.
-# date=dt.datetime(2016, 7,31) #
-# measurement_data=session.query(Measurements.station,Measurements.date,Measurements.prcp).filter(Measurements.date >date).all()
-
-# Unpack the `date` and `prcp` from measurements_data and save into separate lists
-# date_info=[row[0] for row in measurement_data]
-# prcp_info=[row[1] for row in measurement_data]
-
-# dict1=dict(zip(date_info,prcp_info))
-# dict1
-
-# List the stations and the counts in descending order
-# session2=Session(engine)
-# stats=[Measurements.station,
-#       func.min(Measurements.tobs),
-#       func.max(Measurements.tobs),
-#       func.avg(Measurements.tobs),
-#       func.count(Measurements.tobs)]
-# active_station=session2.query(*stats).\
-#         group_by(Measurements.station).\
-#         order_by(func.count(Measurements.tobs).desc()).all()
-
-# stations=[row[0] for row in active_station]
-# most_active_station=stations[0]
-
-
 from flask import Flask,jsonify
 
 app=Flask(__name__)
